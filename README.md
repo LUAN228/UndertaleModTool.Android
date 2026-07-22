@@ -32,7 +32,7 @@ A community-driven Android port of the renowned **UndertaleModTool**, powered by
 
 ---
 
-🙏 Credits & Acknowledgments
+## 🙏 Credits & Acknowledgments
 This mobile project is a frontend port built upon the core engine created by the original Underminers Team.
 
 UndertaleModTool Engine: Created by the UnderminersTeam and all its amazing contributors.
