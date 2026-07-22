@@ -2,7 +2,7 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ "**" ] # Roda automaticamente em qualquer branch
+    branches: [ "**" ] # Garante que vai rodar independente do nome da branch
   workflow_dispatch:
 
 jobs:
@@ -10,30 +10,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Baixar o código do repositório
+    - name: 1. Baixar o código e Dependências Ocultas
       uses: actions/checkout@v4
+      with:
+        submodules: recursive # ISSO CORRIGE O ERRO DO UNDERANALYZER!
+        fetch-depth: 0
 
-    - name: Configurar o .NET 8
+    - name: 2. Travar o .NET na versão correta
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
 
-    - name: Instalar o SDK do Android
+    - name: 3. Instalar Motor do Android
       run: dotnet workload install android
 
-    - name: Compilar o Aplicativo para Android
+    - name: 4. Compilar SOMENTE o App Android
       run: |
-        # Procura automaticamente qualquer arquivo de projeto (.csproj) e compila
-        PROJECT_FILE=$(find . -name "*.csproj" | head -n 1)
+        # Caçador inteligente: Procura apenas arquivos que tenham "Android" no nome
+        PROJECT_FILE=$(find . -iname "*android*.csproj" | head -n 1)
+        
         if [ -z "$PROJECT_FILE" ]; then
-          echo "ERRO CRÍTICO: Nenhum arquivo .csproj foi encontrado no repositório. Você precisa criar o arquivo do projeto!"
+          echo "ERRO CRÍTICO: Não encontrei nenhum arquivo com 'Android' no nome."
+          echo "Por favor, verifique se você criou o arquivo 'UndertaleModTool.Android.csproj'."
           exit 1
         fi
-        echo "Projeto encontrado: $PROJECT_FILE"
+        
+        echo "Sucesso! Encontrei o arquivo correto: $PROJECT_FILE"
+        
+        # Compila do jeito certo
         dotnet publish "$PROJECT_FILE" -c Release -f net8.0-android
-
-    - name: Salvar o APK com sucesso
+        
+    - name: 5. Salvar o instalador APK
       uses: actions/upload-artifact@v4
       with:
         name: UTMT-Android-App
-        path: '**/bin/Release/net8.0-android/**/*.apk'
+        path: '**/*.apk'
