@@ -41,8 +41,12 @@ Avalonia UI: Cross-platform XAML framework enabling native Android UI rendering.
 
 Toby Fox & Team Undertale: For creating Undertale & Deltarune.
 
+---
+
 # Publish the Android project
 dotnet publish UndertaleModTool.Android/UndertaleModTool.Android.csproj -c Release -f net8.0-android
+
+---
 
 ### Local Compilation (.NET 8 SDK)
 If you prefer building locally on Linux or PC:
