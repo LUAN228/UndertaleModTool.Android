@@ -32,15 +32,6 @@ A community-driven Android port of the renowned **UndertaleModTool**, powered by
 
 ---
 
-## 🛠️ How to Build from Source (GitHub Actions)
-
-You don't need a heavy local setup to build this APK. You can use **GitHub Actions** directly:
-
-1. **Fork** this repository to your GitHub account.
-2. Navigate to the **Actions** tab and enable workflows.
-3. Push changes or trigger the workflow manually (`workflow_dispatch`).
-4. Once completed, download the fresh `.apk` artifact generated in the run summary.
-5. 
 🙏 Credits & Acknowledgments
 This mobile project is a frontend port built upon the core engine created by the original Underminers Team.
 
