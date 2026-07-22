@@ -48,4 +48,6 @@ dotnet publish UndertaleModTool.Android/UndertaleModTool.Android.csproj -c Relea
 
 ---
 
-![Flowey: Now YOU are the GOD of this world straight from your pocket.](https://demirramon-media.s3.us-east-2.amazonaws.com/undertale/textbox/generated/15198498.gif)
+<p align="center">
+  <img src="https://demirramon-media.s3.us-east-2.amazonaws.com/undertale/textbox/generated/15198498.gif" alt="Flowey: Now YOU are the GOD of this world straight from your pocket." width="500" />
+</p>
