@@ -48,10 +48,4 @@ dotnet publish UndertaleModTool.Android/UndertaleModTool.Android.csproj -c Relea
 
 ---
 
-### Local Compilation (.NET 8 SDK)
-If you prefer building locally on Linux or PC:
-
-```bash
-# Install the Android workload
-dotnet workload install android
-
+![Flowey: Now YOU are the GOD of this world straight from your pocket.](https://raw.githubusercontent.com/UnderminersTeam/UndertaleModTool/master/images/flowey.gif)
