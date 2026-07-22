@@ -40,6 +40,18 @@ You don't need a heavy local setup to build this APK. You can use **GitHub Actio
 2. Navigate to the **Actions** tab and enable workflows.
 3. Push changes or trigger the workflow manually (`workflow_dispatch`).
 4. Once completed, download the fresh `.apk` artifact generated in the run summary.
+5. 
+🙏 Credits & Acknowledgments
+This mobile project is a frontend port built upon the core engine created by the original Underminers Team.
+
+UndertaleModTool Engine: Created by the UnderminersTeam and all its amazing contributors.
+
+Avalonia UI: Cross-platform XAML framework enabling native Android UI rendering.
+
+Toby Fox & Team Undertale: For creating Undertale & Deltarune.
+
+# Publish the Android project
+dotnet publish UndertaleModTool.Android/UndertaleModTool.Android.csproj -c Release -f net8.0-android
 
 ### Local Compilation (.NET 8 SDK)
 If you prefer building locally on Linux or PC:
@@ -48,5 +60,3 @@ If you prefer building locally on Linux or PC:
 # Install the Android workload
 dotnet workload install android
 
-# Publish the Android project
-dotnet publish UndertaleModTool.Android/UndertaleModTool.Android.csproj -c Release -f net8.0-android
