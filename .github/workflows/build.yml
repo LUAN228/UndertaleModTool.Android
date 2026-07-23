@@ -26,18 +26,19 @@ jobs:
 
     - name: 4. Compilar SOMENTE o App Android
       run: |
-        # Caçador inteligente: Procura apenas arquivos que tenham "Android" no nome
+        # Limpar cache para evitar erros de assets
+        find . -type d -name "obj" -exec rm -rf {} + 2>/dev/null || true
+        find . -type d -name "bin" -exec rm -rf {} + 2>/dev/null || true
+        
+        # Caçador inteligente
         PROJECT_FILE=$(find . -iname "*android*.csproj" | head -n 1)
         
         if [ -z "$PROJECT_FILE" ]; then
           echo "ERRO CRÍTICO: Não encontrei nenhum arquivo com 'Android' no nome."
-          echo "Por favor, verifique se você criou o arquivo 'UndertaleModTool.Android.csproj'."
           exit 1
         fi
         
-        echo "Sucesso! Encontrei o arquivo correto: $PROJECT_FILE"
-        
-        # Compila do jeito certo
+        echo "Sucesso! Encontrei: $PROJECT_FILE"
         dotnet publish "$PROJECT_FILE" -c Release -f net10.0-android
         
     - name: 5. Salvar o instalador APK
