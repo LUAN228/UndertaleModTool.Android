@@ -33,16 +33,18 @@ jobs:
 
     - name: 4. Compilar SOMENTE o App Android
       run: |
-        PROJECT_FILE=$(find . -iname "*android*.csproj" | head -n 1)
+        # Encontrar projeto Android - com proteção contra múltiplos matches
+        PROJECT_FILE=$(find . -iname "*android*.csproj" -print -quit)
         
         if [ -z "$PROJECT_FILE" ]; then
           echo "ERRO CRÍTICO: Não encontrei nenhum arquivo com 'Android' no nome."
           exit 1
         fi
         
-        echo "Sucesso! Encontrei: $PROJECT_FILE"
+        echo "Projeto encontrado: $PROJECT_FILE"
+        
         dotnet clean "$PROJECT_FILE" -c Release 2>/dev/null || true
-        dotnet restore "$PROJECT_FILE" --locked-mode=false
+        dotnet restore "$PROJECT_FILE"
         dotnet publish "$PROJECT_FILE" -c Release -f net10.0-android
         
     - name: 5. Salvar o instalador APK
