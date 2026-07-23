@@ -26,10 +26,6 @@ jobs:
 
     - name: 4. Compilar SOMENTE o App Android
       run: |
-        # Limpar cache para evitar erros de assets
-        find . -type d -name "obj" -exec rm -rf {} + 2>/dev/null || true
-        find . -type d -name "bin" -exec rm -rf {} + 2>/dev/null || true
-        
         # Caçador inteligente
         PROJECT_FILE=$(find . -iname "*android*.csproj" | head -n 1)
         
