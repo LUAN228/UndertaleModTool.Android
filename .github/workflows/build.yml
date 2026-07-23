@@ -24,27 +24,32 @@ jobs:
     - name: 3. Instalar Motor do Android
       run: dotnet workload install android
 
-    - name: 3.5. Limpar cache completo
+    - name: 3.5. Limpar cache e restaurar TUDO
       run: |
-        echo "Removendo todos os diretórios obj e bin..."
-        find . -type d -name "obj" -exec rm -rf {} + 2>/dev/null || true
-        find . -type d -name "bin" -exec rm -rf {} + 2>/dev/null || true
-        find . -type f -name "*.lock" -delete 2>/dev/null || true
-
-    - name: 4. Compilar SOMENTE o App Android
-      run: |
-        # Encontrar projeto Android - com proteção contra múltiplos matches
-        PROJECT_FILE=$(find . -iname "*android*.csproj" -print -quit)
+        PROJECT_FILE=$(find . -iname "*android*.csproj" | head -n 1)
         
         if [ -z "$PROJECT_FILE" ]; then
           echo "ERRO CRÍTICO: Não encontrei nenhum arquivo com 'Android' no nome."
           exit 1
         fi
         
-        echo "Projeto encontrado: $PROJECT_FILE"
+        echo "Limpando cache para: $PROJECT_FILE"
+        rm -rf "${{ github.workspace }}"/**/obj
+        rm -rf "${{ github.workspace }}"/**/bin
         
-        dotnet clean "$PROJECT_FILE" -c Release 2>/dev/null || true
+        echo "Restaurando TODAS as dependências (incluindo UndertaleModLib)..."
         dotnet restore "$PROJECT_FILE"
+
+    - name: 4. Compilar SOMENTE o App Android
+      run: |
+        PROJECT_FILE=$(find . -iname "*android*.csproj" | head -n 1)
+        
+        if [ -z "$PROJECT_FILE" ]; then
+          echo "ERRO CRÍTICO: Não encontrei nenhum arquivo com 'Android' no nome."
+          exit 1
+        fi
+        
+        echo "Sucesso! Encontrei: $PROJECT_FILE"
         dotnet publish "$PROJECT_FILE" -c Release -f net10.0-android
         
     - name: 5. Salvar o instalador APK
