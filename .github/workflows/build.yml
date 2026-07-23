@@ -39,8 +39,8 @@ jobs:
         fi
         
         echo "Sucesso! Encontrei: $PROJECT_FILE"
-        dotnet publish "$PROJECT_FILE" -c Release -f net10.0-android
         dotnet restore "$PROJECT_FILE"
+        dotnet publish "$PROJECT_FILE" -c Release -f net10.0-android
         
     - name: 5. Salvar o instalador APK
       uses: actions/upload-artifact@v4
