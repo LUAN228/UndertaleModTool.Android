@@ -1,15 +1,13 @@
+#if !ANDROID
 using Avalonia;
-using Avalonia.Android;
 
 namespace UndertaleModTool.Android;
 
-public class Program
+internal class Program
 {
-    public static void Main(string[] args) => BuildAvaloniaApp()
-        .StartWithAndroidIntent(args);
-
-    public static AppBuilder BuildAvaloniaApp()
-        => AppBuilder.Configure<App>()
-            .UsePlatformDetect()
-            .LogToTrace();
+    // Este método é ignorado na compilação do Android
+    public static void Main(string[] args)
+    {
+    }
 }
+#endif
