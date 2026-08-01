@@ -30,12 +30,12 @@ jobs:
         find . -type d -name "obj" -prune -exec rm -rf {} + 2>/dev/null || true
         find . -type d -name "bin" -prune -exec rm -rf {} + 2>/dev/null || true
 
-    - name: 4. Restaurar UndertaleModLib com suporte Android
+    - name: 4. Restaurar UndertaleModLib
       run: |
         UNDERLIB=$(find . -iname "UndertaleModLib.csproj" | head -n 1)
         if [ -n "$UNDERLIB" ]; then
           echo "Restaurando dependência: $UNDERLIB"
-          dotnet restore "$UNDERLIB" -r android-arm64 -r android-x64
+          dotnet restore "$UNDERLIB"
         fi
 
     - name: 5. Restaurar projeto Android
@@ -50,14 +50,21 @@ jobs:
         echo "Restaurando: $PROJECT_FILE"
         dotnet restore "$PROJECT_FILE"
 
-    - name: 6. Compilar Android APK
+    - name: 6. Compilar Android APK (arm64)
       run: |
         PROJECT_FILE=$(find . -iname "*android*.csproj" -not -path "*/bin/*" -not -path "*/obj/*" | head -n 1)
         
-        echo "Compilando: $PROJECT_FILE"
-        dotnet publish "$PROJECT_FILE" -c Release -f net10.0-android
+        echo "Compilando para arm64: $PROJECT_FILE"
+        dotnet publish "$PROJECT_FILE" -c Release -f net10.0-android -r android-arm64
+
+    - name: 7. Compilar Android APK (x64)
+      run: |
+        PROJECT_FILE=$(find . -iname "*android*.csproj" -not -path "*/bin/*" -not -path "*/obj/*" | head -n 1)
         
-    - name: 7. Salvar APK
+        echo "Compilando para x64: $PROJECT_FILE"
+        dotnet publish "$PROJECT_FILE" -c Release -f net10.0-android -r android-x64
+        
+    - name: 8. Salvar APKs
       uses: actions/upload-artifact@v4
       with:
         name: UTMT-Android-App
