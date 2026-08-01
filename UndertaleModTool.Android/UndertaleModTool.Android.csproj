@@ -3,9 +3,8 @@
     <TargetFramework>net10.0-android</TargetFramework>
     <OutputType>Exe</OutputType>
     <SupportedOSPlatformVersion>21.0</SupportedOSPlatformVersion>
-    <EnableWindowsTargeting>true</EnableWindowsTargeting>
-    
-    <!-- App Identity -->
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationTitle>UTMT Android</ApplicationTitle>
     <ApplicationId>com.undertalemod.tool</ApplicationId>
     <ApplicationVersion>1</ApplicationVersion>
@@ -13,8 +12,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Referência apenas para a biblioteca principal -->
-    <ProjectReference Include="..\UndertaleModLib\UndertaleModLib.csproj" />
+    <!-- Referência para o projeto Avalonia compartilhado (onde fica a classe App) -->
+    <ProjectReference Include="..\UndertaleModToolAvalonia\UndertaleModToolAvalonia.csproj" />
+    <!-- Referência para a biblioteca do Undertale -->
+    <ProjectReference Include="..\UndertaleMod\UndertaleModLib\UndertaleModLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
