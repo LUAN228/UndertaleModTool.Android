@@ -3,8 +3,9 @@ using Android.Content.PM;
 using Avalonia;
 using Avalonia.Android;
 using Avalonia.ReactiveUI;
+using UndertaleModToolAvalonia;
 
-namespace UndertaleModTool.Android;
+namespace UndertaleModToolAvalonia.Android;
 
 [Activity(
     Label = "@string/app_name",
