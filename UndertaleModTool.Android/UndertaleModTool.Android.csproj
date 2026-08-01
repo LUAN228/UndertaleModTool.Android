@@ -5,25 +5,15 @@
     <SupportedOSPlatformVersion>21.0</SupportedOSPlatformVersion>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    
+    <!-- App Identity -->
     <ApplicationTitle>UTMT Android</ApplicationTitle>
     <ApplicationId>com.undertalemod.tool</ApplicationId>
     <ApplicationVersion>1</ApplicationVersion>
     <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
   </PropertyGroup>
 
-  <ItemGroup>
-    <!-- Referência para o projeto Avalonia compartilhado -->
-    <ProjectReference Include="..\UndertaleModToolAvalonia\UndertaleModToolAvalonia.csproj" />
-    <!-- Referência para a biblioteca do Undertale -->
-    <ProjectReference Include="..\UndertaleMod\UndertaleModLib\UndertaleModLib.csproj" />
-  </ItemGroup>
-
-  <!-- Esta linha é OBRIGATÓRIA para o Android conseguir ler o App.axaml -->
-  <ItemGroup>
-    <AvaloniaResource Include="**\*.axaml" />
-  </ItemGroup>
-
-  <!-- Versões atualizadas para 11.1.3 para corrigir os avisos do Android -->
+  <!-- Pacotes atualizados -->
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.1.3" />
     <PackageReference Include="Avalonia.Android" Version="11.1.3" />
