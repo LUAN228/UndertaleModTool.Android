@@ -15,7 +15,7 @@ public partial class App : Avalonia.Application
     {
         if (ApplicationLifetime is ISingleViewApplicationLifetime singleView)
         {
-            // Ponto de entrada da interface do Android
+            // Ponto de entrada da interface no Android
         }
 
         base.OnFrameworkInitializationCompleted();
