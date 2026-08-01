@@ -30,12 +30,12 @@ jobs:
         find . -type d -name "obj" -prune -exec rm -rf {} + 2>/dev/null || true
         find . -type d -name "bin" -prune -exec rm -rf {} + 2>/dev/null || true
 
-    - name: 4. Restaurar UndertaleModLib primeiro
+    - name: 4. Restaurar UndertaleModLib com suporte Android
       run: |
         UNDERLIB=$(find . -iname "UndertaleModLib.csproj" | head -n 1)
         if [ -n "$UNDERLIB" ]; then
           echo "Restaurando dependência: $UNDERLIB"
-          dotnet restore "$UNDERLIB"
+          dotnet restore "$UNDERLIB" -r android-arm64 -r android-x64
         fi
 
     - name: 5. Restaurar projeto Android
