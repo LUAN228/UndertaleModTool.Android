@@ -1,20 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net10.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-    
-    <!-- Permite compilar dependências do Windows no Linux (GitHub Actions) -->
+    <TargetFramework>net10.0-android</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <SupportedOSPlatformVersion>21.0</SupportedOSPlatformVersion>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    
+    <!-- App Identity -->
+    <ApplicationTitle>UTMT Android</ApplicationTitle>
+    <ApplicationId>com.undertalemod.tool</ApplicationId>
+    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- Referência apenas para a biblioteca principal -->
     <ProjectReference Include="..\UndertaleModLib\UndertaleModLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.0.10" />
+    <PackageReference Include="Avalonia.Android" Version="11.0.10" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.10" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10" />
   </ItemGroup>
