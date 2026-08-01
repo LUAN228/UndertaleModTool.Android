@@ -1,7 +1,8 @@
 using Android.App;
 using Android.Content.PM;
+using Avalonia;
 using Avalonia.Android;
-using UndertaleModTool;
+using Avalonia.ReactiveUI;
 
 namespace UndertaleModTool.Android;
 
@@ -11,4 +12,10 @@ namespace UndertaleModTool.Android;
     ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.UiMode)]
 public class MainActivity : AvaloniaMainActivity<App>
 {
+    protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
+    {
+        return base.CustomizeAppBuilder(builder)
+            .WithInterFont()
+            .UseReactiveUI();
+    }
 }
