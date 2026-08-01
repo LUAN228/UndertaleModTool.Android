@@ -12,16 +12,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Referência para o projeto Avalonia compartilhado (onde fica a classe App) -->
+    <!-- Referência para o projeto Avalonia compartilhado -->
     <ProjectReference Include="..\UndertaleModToolAvalonia\UndertaleModToolAvalonia.csproj" />
     <!-- Referência para a biblioteca do Undertale -->
     <ProjectReference Include="..\UndertaleMod\UndertaleModLib\UndertaleModLib.csproj" />
   </ItemGroup>
 
+  <!-- Esta linha é OBRIGATÓRIA para o Android conseguir ler o App.axaml -->
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="11.0.10" />
-    <PackageReference Include="Avalonia.Android" Version="11.0.10" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.10" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10" />
+    <AvaloniaResource Include="**\*.axaml" />
+  </ItemGroup>
+
+  <!-- Versões atualizadas para 11.1.3 para corrigir os avisos do Android -->
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.1.3" />
+    <PackageReference Include="Avalonia.Android" Version="11.1.3" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.3" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.1.3" />
   </ItemGroup>
 </Project>
