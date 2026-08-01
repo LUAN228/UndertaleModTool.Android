@@ -1,0 +1,23 @@
+using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Markup.Xaml;
+
+namespace UndertaleModTool.Android;
+
+public partial class App : Application
+{
+    public override void Initialize()
+    {
+        AvaloniaXamlLoader.Load(this);
+    }
+
+    public override void OnFrameworkInitializationCompleted()
+    {
+        if (ApplicationLifetime is ISingleViewApplicationLifetime singleView)
+        {
+            // Ponto de entrada da interface do Android
+        }
+
+        base.OnFrameworkInitializationCompleted();
+    }
+}
