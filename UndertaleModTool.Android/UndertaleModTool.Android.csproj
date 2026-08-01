@@ -12,7 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- Referência para a biblioteca original que você já tinha -->
     <ProjectReference Include="..\UndertaleModLib\UndertaleModLib.csproj" />
+    
+    <!-- NOVA REFERÊNCIA: Aponta para o projeto principal onde a classe App existe -->
+    <ProjectReference Include="..\UndertaleModTool\UndertaleModTool.csproj" />
   </ItemGroup>
 
   <ItemGroup>
